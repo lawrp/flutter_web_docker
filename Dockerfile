@@ -31,8 +31,6 @@ RUN flutter build web
 RUN flutter packages get
 RUN flutter packages upgrade
 
-# Record the exposed port
-EXPOSE 9000
 
 # make server startup script executable and start the web server
 RUN ["chmod", "+x", "/app/server/server.sh"]
