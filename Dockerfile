@@ -28,6 +28,9 @@ COPY . /app/
 WORKDIR /app/
 RUN flutter build web
 
+RUN flutter packages get
+RUN flutter packages upgrade
+
 # Record the exposed port
 EXPOSE 9000
 
