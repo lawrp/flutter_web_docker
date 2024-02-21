@@ -12,4 +12,4 @@ The devcontainer.json file is used by Visual Studio Code's Remote - Containers e
 3. server.sh
 The server.sh (located in the server folder) script hosts a simple local live server to serve the Flutter web app. You can customize this script based on your project's requirements.
 
-To use: clone the repository, build and run the docker image, then you can either develop your app or test it by running server.sh.  
+To use: clone the repository, build and run the docker image, then you can either develop your app or test it by running server.sh from the terminal.  
