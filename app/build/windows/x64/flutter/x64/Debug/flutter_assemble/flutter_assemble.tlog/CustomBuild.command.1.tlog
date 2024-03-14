@@ -1,0 +1,28 @@
+^C:\USERS\RILEY\DOCUMENTS\FLUTTER\FLUTTER_WEB_DOCKER\BUILD\WINDOWS\X64\CMAKEFILES\043F79C42A446A304EF216B07EAFE5B3\FLUTTER_WINDOWS.DLL.RULE
+setlocal
+"C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E env FLUTTER_ROOT=C:\Users\riley\Documents\flutter\flutter PROJECT_DIR=C:\Users\riley\Documents\flutter\flutter_web_docker FLUTTER_ROOT=C:\Users\riley\Documents\flutter\flutter FLUTTER_EPHEMERAL_DIR=C:\Users\riley\Documents\flutter\flutter_web_docker\windows\flutter\ephemeral PROJECT_DIR=C:\Users\riley\Documents\flutter\flutter_web_docker FLUTTER_TARGET=C:\Users\riley\Documents\flutter\flutter_web_docker\lib\main.dart DART_DEFINES=RkxVVFRFUl9XRUJfQVVUT19ERVRFQ1Q9dHJ1ZQ==,RkxVVFRFUl9XRUJfQ0FOVkFTS0lUX1VSTD1odHRwczovL3d3dy5nc3RhdGljLmNvbS9mbHV0dGVyLWNhbnZhc2tpdC9mNDBlOTc2YmVkZmY1N2U2OWUxYjNkODlhN2MyYTNjNjE3YTAzZGFkLw== DART_OBFUSCATION=false TRACK_WIDGET_CREATION=true TREE_SHAKE_ICONS=false PACKAGE_CONFIG=C:\Users\riley\Documents\flutter\flutter_web_docker\.dart_tool\package_config.json C:/Users/riley/Documents/flutter/flutter/packages/flutter_tools/bin/tool_backend.bat windows-x64 Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\RILEY\DOCUMENTS\FLUTTER\FLUTTER_WEB_DOCKER\BUILD\WINDOWS\X64\CMAKEFILES\1459359C8201969F94579EB1C7CAD1E9\FLUTTER_ASSEMBLE.RULE
+setlocal
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\RILEY\DOCUMENTS\FLUTTER\FLUTTER_WEB_DOCKER\WINDOWS\FLUTTER\CMAKELISTS.TXT
+setlocal
+"C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/riley/Documents/flutter/flutter_web_docker/windows -BC:/Users/riley/Documents/flutter/flutter_web_docker/build/windows/x64 --check-stamp-file C:/Users/riley/Documents/flutter/flutter_web_docker/build/windows/x64/flutter/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
