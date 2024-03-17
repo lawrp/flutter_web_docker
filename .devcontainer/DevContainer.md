@@ -19,7 +19,7 @@ This image can reopened directly from VS Code on your local machine. This can be
 
 **Usage**
 
-To integrate DevContainer into your workflow, open your project in Visual Studio Code, select "Open in Container," then edit code, run Flutter applications, and maintain consistency in development environments effortlessly.
+To integrate this DevContainer into your workflow, open your project in Visual Studio Code, select "Open in Container," then edit code, run Flutter applications, and maintain consistency in development environments effortlessly.
 
 **Challenges and Solutions**
 
