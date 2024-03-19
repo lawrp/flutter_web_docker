@@ -3,14 +3,12 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Dart
+name: CI/CD Build Actions
 
 on:
   push:
     branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
-
+    
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -27,8 +25,5 @@ jobs:
       - name: Run tests
         run: flutter test
         
-      - name: check directory
-        run: pwd
-
       - name: build web
         run: flutter build web
