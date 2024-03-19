@@ -22,6 +22,15 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
+      - name: channel switch
+        run: flutter channel master
+
+      - name: Upgrade pub dependencies
+        run: flutter upgrade
+
+      - name: Enable web
+        run: flutter config --enable-web
+
       - name: Run tests
         run: flutter test
         
