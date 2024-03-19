@@ -7,8 +7,8 @@ RUN apt-get update
 RUN apt-get install -y curl git wget unzip libgconf-2-4 gdb libstdc++6 libglu1-mesa fonts-droid-fallback python3
 RUN apt-get clean
 
-#RUN wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-#RUN apt-get install -y ./google-chrome-stable_current_amd64.deb
+RUN wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+RUN apt-get install -y ./google-chrome-stable_current_amd64.deb
 
 ENV DEBIAN_FRONTEND=dialog
 # download Flutter SDK from Flutter Github repo
@@ -27,12 +27,9 @@ RUN flutter config --enable-web
 
 # Copy files to container and build
 RUN mkdir /app/
-COPY .. /app/
+COPY . /app/
 WORKDIR /app/
-
-RUN flutter build web
-
 # make server startup script executable and start the web server
 RUN ["chmod", "+x", "/app/server/server.sh"]
 
-ENTRYPOINT [ "/app/server/server.sh"]
+CMD [ "/app/server/server.sh"]
