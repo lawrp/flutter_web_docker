@@ -26,6 +26,10 @@ jobs:
 
       - name: Run tests
         run: flutter test
+        
+      - name: check directory
+        run: pwd
 
       - name: build web
+        working-directory: flutter_web_docker
         run: flutter build web
