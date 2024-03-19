@@ -3,14 +3,12 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Dart
+name: CI/CD Build Actions
 
 on:
   push:
     branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
-
+    
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -24,8 +22,17 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
+      - name: channel switch
+        run: flutter channel master
+
+      - name: Upgrade pub dependencies
+        run: flutter upgrade
+
+      - name: Enable web
+        run: flutter config --enable-web
+
       - name: Run tests
         run: flutter test
-
+        
       - name: build web
         run: flutter build web
