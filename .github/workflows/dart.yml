@@ -31,5 +31,4 @@ jobs:
         run: pwd
 
       - name: build web
-        working-directory: flutter_web_docker
         run: flutter build web
