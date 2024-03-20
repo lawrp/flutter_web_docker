@@ -19,6 +19,7 @@ jobs:
       - run: flutter pub upgrade
       - run: flutter build web
       - uses: actions/checkout@v4
+      - run: firebase experiments:enable webframeworks
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
