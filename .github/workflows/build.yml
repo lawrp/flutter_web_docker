@@ -18,3 +18,4 @@ jobs:
       - run: flutter test
       - run: flutter pub upgrade
       - run: flutter build web
+
