@@ -17,6 +17,10 @@ RUN git clone https://github.com/flutter/flutter.git /usr/local/flutter
 # Set flutter environment path
 ENV PATH="/usr/local/flutter/bin:/usr/local/flutter/bin/cache/dart-sdk/bin:${PATH}"
 
+#Install Firebase CLI
+RUN npm install -g firebase-tools
+RUN firebase experiments:enable webframeworks
+
 # Run flutter doctor
 RUN flutter doctor
 
