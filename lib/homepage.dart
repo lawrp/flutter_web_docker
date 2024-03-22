@@ -15,6 +15,7 @@ class _HomePageState extends State<HomePage> {
   int numberOfSquares = 160;
   List<int> piece = [];
   var direction = "left";
+  List<int> landed = [];
 
   void startGame() {
     piece = [numberOfSquares - 3, numberOfSquares - 2, numberOfSquares - 1];
@@ -39,7 +40,11 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  void stack() {}
+  void stack() {
+    for (int i = 0; i < piece.length; i++) {
+      landed.add(piece[i]);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +60,10 @@ class _HomePageState extends State<HomePage> {
                       crossAxisCount: 10),
                   itemBuilder: (BuildContext context, int index) {
                     if (piece.contains(index)) {
+                      return MyPixel(
+                        color: Colors.white,
+                      );
+                    } else if (landed.contains(index)) {
                       return MyPixel(
                         color: Colors.white,
                       );
