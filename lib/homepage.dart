@@ -12,14 +12,23 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int numberOfSquares = 160;
+  int numberOfSquares = 100;
   List<int> piece = [];
   var direction = "left";
-  List<int> landed = [];
-
+  List<int> landed = [1000];
+  int level = 0;
   void startGame() {
-    piece = [numberOfSquares - 3, numberOfSquares - 2, numberOfSquares - 1];
-    Timer.periodic(Duration(milliseconds: 250), (time) {
+    piece = [
+      numberOfSquares - 3 - level * 10,
+      numberOfSquares - 2 - level * 10,
+      numberOfSquares - 1 - level * 10
+    ];
+    Timer.periodic(Duration(milliseconds: 150), (timer) {
+      if (checkWinner()) {
+        _showDialog();
+        timer.cancel();
+      }
+
       if (piece.first % 10 == 0) {
         direction = "right";
       } else if (piece.last % 10 == 9) {
@@ -41,9 +50,81 @@ class _HomePageState extends State<HomePage> {
   }
 
   void stack() {
-    for (int i = 0; i < piece.length; i++) {
-      landed.add(piece[i]);
+    level++;
+    setState(() {
+      for (int i = 0; i < piece.length; i++) {
+        landed.add(piece[i]);
+      }
+      if (level < 4) {
+        piece = [
+          numberOfSquares - 3 - level * 10,
+          numberOfSquares - 2 - level * 10,
+          numberOfSquares - 1 - level * 10
+        ];
+      } else if (level >= 4 && level < 8) {
+        piece = [
+          numberOfSquares - 2 - level * 10,
+          numberOfSquares - 1 - level * 10,
+        ];
+      } else {
+        piece = [
+          numberOfSquares - 1 - level * 10,
+        ];
+      }
+      checkStack();
+    });
+  }
+
+  void reset() {
+    numberOfSquares = 100;
+    piece = [];
+    direction = "left";
+    landed = [1000];
+    level = 0;
+    Navigator.of(context).pop();
+    startGame();
+  }
+
+  void checkStack() {
+    for (int i = 0; i < landed.length; i++) {
+      if (!landed.contains(landed[i] + 10) &&
+          (landed[i] + 10 < numberOfSquares - 1)) {
+        landed.remove(landed[i]);
+      }
     }
+    for (int i = 0; i < landed.length; i++) {
+      if (!landed.contains(landed[i] + 10) &&
+          (landed[i] + 10 < numberOfSquares - 1)) {
+        landed.remove(landed[i]);
+      }
+    }
+  }
+
+  bool checkWinner() {
+    if (landed.last < 10) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  void _showDialog() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(
+              "Winner!",
+              textAlign: TextAlign.center,
+            ),
+            actions: [
+              MyButton(
+                  function: reset,
+                  child: Text("Play Again",
+                      style: TextStyle(color: Colors.white, fontSize: 30))),
+            ],
+          );
+        });
   }
 
   @override
