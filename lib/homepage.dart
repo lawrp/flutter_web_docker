@@ -107,6 +107,9 @@ class _HomePageState extends State<HomePage> {
       return false;
     }
   }
+  //bool checkLost() {
+  // if ()
+  // }
 
   void _showDialog() {
     showDialog(
