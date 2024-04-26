@@ -7,7 +7,8 @@ Continuous Integration and Continuous Deployment (CI/CD) pipelines have become i
 
 
 ## Source Code Version Control Tools
-Description of the version control system utilized (e.g., Git), focusing on how the source code is managed and integrated with the CI/CD pipeline.
+For my project, I've opted for Git as my version control system due to its widespread adoption, robust branching and merging capabilities, and seamless integration with various hosting platforms. Git's distributed nature allows for a flexible workflow, while its performance ensures efficient operations. Overall, Git provides the ideal solution for managing our project's source code and facilitating the possibility for effective collaboration in the future. 
+
 
 ## CI/CD Pipeline Environment
 In-depth description of the CI/CD pipeline setup, including any utilized cloud services or local environments.
