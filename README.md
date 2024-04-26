@@ -7,7 +7,12 @@ Continuous Integration and Continuous Deployment (CI/CD) pipelines have become i
 
 
 ## Source Code Version Control Tools
-For my project, I've opted for Git as my version control system due to its widespread adoption, robust branching and merging capabilities, and seamless integration with various hosting platforms. Git's distributed nature allows for a flexible workflow, while its performance ensures efficient operations. Overall, Git provides the ideal solution for managing our project's source code and facilitating the possibility for effective collaboration in the future. 
+For my project, I've opted for Git as my version control system due to its widespread adoption, robust branching and merging capabilities, and seamless integration with various hosting platforms. Git's distributed nature allows for a flexible workflow, while its performance ensures efficient operations. Overall, Git provides the ideal solution for managing my project's source code and facilitating the possibility for effective collaboration in the future. 
+
+As for my source code repository host, I've opted to use GitHub as it is the industry standard and GitHub's seamless integration with Visual Studio Code makes it the perfect choice, offering a cohesive development experience within a familiar environment. The tight integration enables effortless version control and collaboration, enhancing productivity throughout the development lifecycle. 
+
+The following features make GitHub the ideal choice for development:
+
 
 
 ## CI/CD Pipeline Environment
