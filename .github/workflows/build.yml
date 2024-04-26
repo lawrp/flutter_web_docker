@@ -4,7 +4,10 @@ name: CI/CD Build Actions
 on:
   push:
     branches: [ "master" ]
-    
+    paths-ignore:
+      - '**/*.yaml'
+      - '**/*.md'
+      - '**/*.txt'
 jobs:
   build:
     runs-on: ubuntu-latest
