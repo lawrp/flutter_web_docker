@@ -5,7 +5,7 @@ on:
   push:
     branches: [ "master" ]
     paths-ignore:
-      - '**/*.yaml'
+      - '**/*.yml'
       - '**/*.md'
       - '**/*.txt'
 jobs:
