@@ -14,8 +14,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size screenSize = MediaQuery.of(context).size;
-    Orientation orientation = MediaQuery.of(context).orientation;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: HomePage(),

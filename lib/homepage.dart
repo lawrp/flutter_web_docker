@@ -131,49 +131,53 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.grey[700],
-        body: Column(
-          children: [
-            Expanded(
-              flex: 6,
-              child: GridView.builder(
-                  itemCount: numberOfSquares,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 10),
-                  itemBuilder: (BuildContext context, int index) {
-                    if (piece.contains(index)) {
-                      return MyPixel(
-                        color: Colors.white,
-                      );
-                    } else if (landed.contains(index)) {
-                      return MyPixel(
-                        color: Colors.white,
-                      );
-                    } else {
-                      return MyPixel(
-                        color: Colors.black,
-                      );
-                    }
-                  }),
-            ),
-            Expanded(
-                child: Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  MyButton(
-                      function: startGame,
-                      child: Text("P L A Y",
-                          style: TextStyle(color: Colors.white, fontSize: 30))),
-                  MyButton(
-                      function: stack,
-                      child: Text("S T O P",
-                          style: TextStyle(color: Colors.white, fontSize: 30)))
-                ],
-              ),
-            ))
-          ],
-        ));
+    return Directionality(
+        textDirection: TextDirection.ltr,
+        child: Scaffold(
+            backgroundColor: Colors.grey[700],
+            body: Column(
+              children: [
+                Expanded(
+                  flex: 6,
+                  child: GridView.builder(
+                      itemCount: numberOfSquares,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 10),
+                      itemBuilder: (BuildContext context, int index) {
+                        if (piece.contains(index)) {
+                          return MyPixel(
+                            color: Colors.white,
+                          );
+                        } else if (landed.contains(index)) {
+                          return MyPixel(
+                            color: Colors.white,
+                          );
+                        } else {
+                          return MyPixel(
+                            color: Colors.black,
+                          );
+                        }
+                      }),
+                ),
+                Expanded(
+                    child: Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      MyButton(
+                          function: startGame,
+                          child: Text("P L A Y",
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: 30))),
+                      MyButton(
+                          function: stack,
+                          child: Text("S T O P",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 30)))
+                    ],
+                  ),
+                ))
+              ],
+            )));
   }
 }

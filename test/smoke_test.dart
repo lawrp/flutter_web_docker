@@ -3,12 +3,14 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:basic/homepage.dart';
 
 void main() {
-  // Define a test. The TestWidgets function also provides a WidgetTester
-  // to work with. The WidgetTester allows you to build and interact
-  // with widgets in the test environment.
-  testWidgets('MyWidget has a title and message', (tester) async {
-    // Test code goes here.
+  testWidgets('Verify UI components are rendered correctly',
+      (WidgetTester tester) async {
+    // Build the Stacker game widget
+    await tester.pumpWidget(const HomePage());
+    expect(find.text('P L A Y'), findsOneWidget);
+    expect(find.text('S T O P'), findsOneWidget);
   });
 }
