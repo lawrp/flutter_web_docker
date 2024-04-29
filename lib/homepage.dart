@@ -1,6 +1,7 @@
 import "dart:async";
 import "package:audioplayers/audioplayers.dart";
 import "package:basic/pixel.dart";
+import "package:basic/responsive.dart";
 import "package:flutter/material.dart";
 import "package:basic/button.dart";
 import "package:basic/responsive.dart";
@@ -170,13 +171,13 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Directionality(
         textDirection: TextDirection.ltr,
-        child: ResponsivePadding(
-            child: Scaffold(
-                backgroundColor: Colors.grey[700],
-                body: Column(
-                  children: [
-                    Expanded(
-                      flex: 6,
+        child: Scaffold(
+            backgroundColor: Colors.grey[700],
+            body: Column(
+              children: [
+                Expanded(
+                    flex: 6,
+                    child: ResponsivePadding(
                       child: GridView.builder(
                           itemCount: numberOfSquares,
                           gridDelegate:
@@ -197,31 +198,26 @@ class _HomePageState extends State<HomePage> {
                               );
                             }
                           }),
-                    ),
-                    Expanded(
-                        child: Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          MyButton(
-                              function: startGame,
-                              child: Text("P L A Y",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 30))),
-                          MyButton(
-                              function: startGame,
-                              child: Text("F A S T E R",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 30))),
-                          MyButton(
-                              function: stack,
-                              child: Text("S T O P",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 30))),
-                        ],
-                      ),
-                    ))
-                  ],
-                ))));
+                    )),
+                Expanded(
+                    child: Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      MyButton(
+                          function: startGame,
+                          child: Text("P L A Y",
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: 30))),
+                      MyButton(
+                          function: stack,
+                          child: Text("S T O P",
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: 30))),
+                    ],
+                  ),
+                ))
+              ],
+            )));
   }
 }
