@@ -17,7 +17,8 @@ class _HomePageState extends State<HomePage> {
   int numberOfSquares = 100;
   List<int> piece = [];
   var direction = "left";
-  List<int> landed = [1000];
+  List<int> landed = [];
+  List<int> lastLanded = [];
   int level = 0;
   String status = "winner!";
   void startGame() {
@@ -27,11 +28,20 @@ class _HomePageState extends State<HomePage> {
       numberOfSquares - 1 - level * 10
     ];
     Timer.periodic(Duration(milliseconds: 150), (timer) {
-      if (checkWinner()) {
-        _showDialog();
-        timer.cancel();
+      if (landed.isNotEmpty) {
+        if (checkWinner()) {
+          levelup.play(AssetSource('../assets/music/win.wav'));
+          _showDialog();
+          timer.cancel();
+        }
       }
-
+      if (level > 1) {
+        if (checkLost()) {
+          levelup.play(AssetSource('../assets/music/fail.mp3'));
+          _showDialog();
+          timer.cancel();
+        }
+      }
       if (piece.first % 10 == 0) {
         player.play(AssetSource('../assets/music/bounce.wav'));
         direction = "right";
@@ -55,9 +65,12 @@ class _HomePageState extends State<HomePage> {
   }
 
   void stack() {
-    level++;
-    if (level > 0) {
-      levelup.play(AssetSource('../assets/music/levelup.wav'));
+    lastLanded = piece;
+    if (!checkLost() || level < 2) {
+      level++;
+      if (level > 0 && level < 10) {
+        levelup.play(AssetSource('../assets/music/levelup.wav'));
+      }
     }
     setState(() {
       for (int i = 0; i < piece.length; i++) {
@@ -87,7 +100,7 @@ class _HomePageState extends State<HomePage> {
     numberOfSquares = 100;
     piece = [];
     direction = "left";
-    landed = [1000];
+    landed = [];
     level = 0;
     Navigator.of(context).pop();
     startGame();
@@ -110,10 +123,27 @@ class _HomePageState extends State<HomePage> {
 
   bool checkWinner() {
     if (landed.last < 10) {
+      status = "Winner!";
       return true;
     } else {
       return false;
     }
+  }
+
+  bool checkLost() {
+    if (lastLanded.isNotEmpty) {
+      for (int i = 0; i < lastLanded.length; i++) {
+        for (int j = 0; j < landed.length; j++) {
+          if (lastLanded[i] + 10 == landed[j]) {
+            // A piece in 'lastLanded' is touching a piece in 'landed'
+            return false; // Player has not lost
+          }
+        }
+      }
+      status = "Loser!";
+      return true; // Player has lost
+    }
+    return false;
   }
 
   void _showDialog() {
