@@ -1,8 +1,11 @@
 import "dart:async";
-
+import "package:audioplayers/audioplayers.dart";
 import "package:basic/pixel.dart";
 import "package:flutter/material.dart";
 import "package:basic/button.dart";
+
+final player = AudioPlayer();
+final levelup = AudioPlayer();
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,6 +19,7 @@ class _HomePageState extends State<HomePage> {
   var direction = "left";
   List<int> landed = [1000];
   int level = 0;
+  String status = "winner!";
   void startGame() {
     piece = [
       numberOfSquares - 3 - level * 10,
@@ -29,8 +33,10 @@ class _HomePageState extends State<HomePage> {
       }
 
       if (piece.first % 10 == 0) {
+        player.play(AssetSource('../assets/music/bounce.wav'));
         direction = "right";
       } else if (piece.last % 10 == 9) {
+        player.play(AssetSource('../assets/music/bounce.wav'));
         direction = "left";
       }
 
@@ -50,6 +56,9 @@ class _HomePageState extends State<HomePage> {
 
   void stack() {
     level++;
+    if (level > 0) {
+      levelup.play(AssetSource('../assets/music/levelup.wav'));
+    }
     setState(() {
       for (int i = 0; i < piece.length; i++) {
         landed.add(piece[i]);
@@ -106,9 +115,6 @@ class _HomePageState extends State<HomePage> {
       return false;
     }
   }
-  //bool checkLost() {
-  // if ()
-  // }
 
   void _showDialog() {
     showDialog(
@@ -116,7 +122,7 @@ class _HomePageState extends State<HomePage> {
         builder: (BuildContext context) {
           return AlertDialog(
             title: Text(
-              "Winner!",
+              status,
               textAlign: TextAlign.center,
             ),
             actions: [
@@ -170,10 +176,15 @@ class _HomePageState extends State<HomePage> {
                               style: TextStyle(
                                   color: Colors.white, fontSize: 30))),
                       MyButton(
+                          function: startGame,
+                          child: Text("F A S T E R",
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: 30))),
+                      MyButton(
                           function: stack,
                           child: Text("S T O P",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 30)))
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: 30))),
                     ],
                   ),
                 ))
